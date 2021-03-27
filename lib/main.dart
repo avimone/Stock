@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (context) => Logs()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
             primaryColor: const Color(0xFF4F6367),
             accentColor: const Color(0xFFEEF5DB),

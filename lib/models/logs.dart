@@ -54,7 +54,7 @@ class Logs with ChangeNotifier {
   Future<void> addLog(String name, String happn, double amount, DateTime time,
       double price) async {
     try {
-      if (number == "8866535452") {
+      if (number == "8866535452" || number == "9106116309") {
         userId = "aWfOSS3W81eprgxms6QZT11vTZr1";
       }
       var url = 'https://stocks-a5b4a-default-rtdb.firebaseio.com/log.json';
@@ -86,7 +86,7 @@ class Logs with ChangeNotifier {
   }
 
   Future<void> fetchAndSetProducts() async {
-    if (number == "8866535452") {
+    if (number == "8866535452" || number == "9106116309") {
       userId = "aWfOSS3W81eprgxms6QZT11vTZr1";
     }
     var url =
