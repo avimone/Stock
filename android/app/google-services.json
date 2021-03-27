@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "233709264569",
+    "project_id": "stocks-a5b4a",
+    "storage_bucket": "stocks-a5b4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233709264569:android:3a61f01d62f1e7792c0568",
+        "android_client_info": {
+          "package_name": "com.gadgetspidy.Stock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233709264569-e6slj699igb9sn7hirctibrfjt6nql1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdBkELt7NoVu_ABH39kQBia54xbziRPD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233709264569-e6slj699igb9sn7hirctibrfjt6nql1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
