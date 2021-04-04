@@ -13,8 +13,9 @@ class Products with ChangeNotifier {
   // final String authToken;
   // final String userId;
 //  Products(this.authToken, this.userId, this._items);
-  String number = FirebaseAuth.instance.currentUser.phoneNumber;
-  String userId = FirebaseAuth.instance.currentUser.uid;
+//  String number = FirebaseAuth.instance.currentUser.phoneNumber;
+  // String userId = FirebaseAuth.instance.currentUser.uid;
+
   List<Product> get items {
     // if (_showFavoritesOnly) {
     //   return _items.where((prodItem) => prodItem.isFavorite).toList();
@@ -26,19 +27,18 @@ class Products with ChangeNotifier {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
-  Future<void> addProduct(
-    String id,
-    String name,
-    double price,
-    double amount,
-  ) async {
-    if (number == "8866535452" || number == "9106116309") {
+  Future<void> addProduct(String id, String name, double price, double amount,
+      String userId) async {
+    /*  if (number == "8866535452" ||
+        number == "9106116309" ||
+        number == "7014799875") {
       userId = "aWfOSS3W81eprgxms6QZT11vTZr1";
-    }
+    } */
     try {
       var url =
           'https://stocks-a5b4a-default-rtdb.firebaseio.com/products.json';
 
+      print(userId);
       final response = await http.post(url,
           body: json.encode({
             'id': id,
@@ -63,10 +63,12 @@ class Products with ChangeNotifier {
     }
   }
 
-  Future<void> fetchAndSetProducts() async {
-    if (number == "8866535452" || number == "9106116309") {
+  Future<void> fetchAndSetProducts(String userId) async {
+    /*  if (number == "8866535452" ||
+        number == "9106116309" ||
+        number == "7014799875") {
       userId = "aWfOSS3W81eprgxms6QZT11vTZr1";
-    }
+    } */
     var url =
         'https://stocks-a5b4a-default-rtdb.firebaseio.com/products.json?orderBy="creatorid"&equalTo="$userId"';
     try {

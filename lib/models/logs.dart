@@ -15,9 +15,9 @@ class Logs with ChangeNotifier {
   // final String userId;
 
 //  Products(this.authToken, this.userId, this._items);
-  String number = FirebaseAuth.instance.currentUser.phoneNumber;
+  /*  String number = FirebaseAuth.instance.currentUser.phoneNumber;
   String userId = FirebaseAuth.instance.currentUser.uid;
-
+ */
   List<Log> get history {
     // if (_showFavoritesOnly) {
     //   return _items.where((prodItem) => prodItem.isFavorite).toList();
@@ -52,11 +52,11 @@ class Logs with ChangeNotifier {
   }
 
   Future<void> addLog(String name, String happn, double amount, DateTime time,
-      double price) async {
+      double price, String userId) async {
     try {
-      if (number == "8866535452" || number == "9106116309") {
+      /*   if (number == "8866535452" || number == "9106116309") {
         userId = "aWfOSS3W81eprgxms6QZT11vTZr1";
-      }
+      } */
       var url = 'https://stocks-a5b4a-default-rtdb.firebaseio.com/log.json';
 
       final response = await http.post(url,
@@ -85,10 +85,10 @@ class Logs with ChangeNotifier {
     }
   }
 
-  Future<void> fetchAndSetProducts() async {
-    if (number == "8866535452" || number == "9106116309") {
+  Future<void> fetchAndSetProducts(String userId) async {
+    /*   if (number == "8866535452" || number == "9106116309") {
       userId = "aWfOSS3W81eprgxms6QZT11vTZr1";
-    }
+    } */
     var url =
         'https://stocks-a5b4a-default-rtdb.firebaseio.com/log.json?orderBy="creatorid"&equalTo="$userId"';
     try {

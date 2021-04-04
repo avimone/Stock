@@ -5,45 +5,35 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:Stock/models/products.dart';
 
-class ItemList extends StatefulWidget {
+class ItemList extends StatelessWidget {
   final String id;
   final String name;
   //final String imageUrl;
-  double amount;
-  double price;
-
+  final double amount;
+  final double price;
+  final String userId;
   ItemList(
       this.id,
       this.name,
       //this.imageUrl,
       this.amount,
-      this.price);
-
-  @override
-  _ItemListState createState() => _ItemListState();
-}
-
-class _ItemListState extends State<ItemList> {
+      this.price,
+      this.userId);
   @override
   Widget build(BuildContext context) {
-    print(widget.amount);
-    print(widget.id);
-    //  print(widget.imageUrl);
-    print(widget.price);
-    print(widget.name);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
-        child: Image.asset(
-          'assets/Asset.png',
-          width: 600.0,
-          height: 240.0,
-          fit: BoxFit.cover,
+        child: Container(
+          color: Colors.amber,
+          child: Card(
+            color: const Color(0xFF25C0C0),
+          ),
         ),
         header: GridTileBar(
           backgroundColor: Colors.white60,
           title: Text(
-            widget.amount == null ? "no" : widget.amount.toString(),
+            amount == null ? "no" : amount.toString(),
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
           leading: IconButton(
@@ -52,8 +42,8 @@ class _ItemListState extends State<ItemList> {
             ),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => ItemChange(
-                      widget.name, widget.amount, widget.price, widget.id)));
+                  builder: (context) =>
+                      ItemChange(name, amount, price, id, userId)));
             },
             color: Colors.black87,
           ),
@@ -70,46 +60,10 @@ class _ItemListState extends State<ItemList> {
           //       ),
           //   ),
           title: Text(
-            widget.name == null ? "no" : widget.name,
+            name == null ? "no" : name,
           ),
         ),
       ),
     );
   }
-/*
-  void removeItem(String xid) {
-    // print(xid);
-    final productsData = Provider.of<Products>(context, listen: false);
-    final products = productsData.items;
-
-    var item = products.firstWhere((element) => element.id == xid);
-    setState(() {
-      // int temp = int.parse(item.amount);
-      // temp--;
-      //  //item.amount = temp.toString();
-      print(xid);
-      print(item.id);
-      item.amount--;
-      widget.amount = item.amount;
-    });
-
-    //print(productsData.items[0].amount);
-  }
-
-  void addItem(String xid) {
-    // print(xid);
-    final productsData = Provider.of<Products>(context, listen: false);
-    final products = productsData.items;
-
-    var item = products.firstWhere((element) => element.id == xid);
-    setState(() {
-      //     int temp = int.parse(item.amount);
-      //    temp++;
-      //   item.amount = temp.toString();
-      item.amount++;
-      widget.amount = item.amount;
-    });
-
-    //  print(item.amount);
-  }*/
 }

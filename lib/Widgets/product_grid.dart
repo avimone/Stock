@@ -5,6 +5,8 @@ import 'package:Stock/models/product.dart';
 import 'package:Stock/Widgets/item_list.dart';
 
 class ProductsGrid extends StatefulWidget {
+  String userId;
+  ProductsGrid(this.userId);
   @override
   _ProductsGridState createState() => _ProductsGridState();
 }
@@ -83,6 +85,7 @@ class _ProductsGridState extends State<ProductsGrid> {
                 //   filteredList[i].imageUrl,
                 filteredList[i].amount,
                 filteredList[i].price,
+                widget.userId,
               ),
             ),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

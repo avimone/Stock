@@ -28,6 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _addNewTransaction(
       String txname, double txAmount, DateTime chosenDate, double txPrice) {
+    print(widget.number);
+    print(id);
     final newTx = Product(
       name: txname,
       amount: txAmount,
@@ -38,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
     //   print(id);
     setState(() {
       final productsData = Provider.of<Products>(context, listen: false);
-      productsData.addProduct(newTx.id, newTx.name, newTx.price, newTx.amount);
+      productsData.addProduct(
+          newTx.id, newTx.name, newTx.price, newTx.amount, id);
     });
   }
 
@@ -56,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _refreshProducts(BuildContext context) async {
-    await Provider.of<Products>(context, listen: false).fetchAndSetProducts();
+    await Provider.of<Products>(context, listen: false).fetchAndSetProducts(id);
   }
 
   @override
@@ -65,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<Products>(context).fetchAndSetProducts().then((_) {
+      Provider.of<Products>(context).fetchAndSetProducts(id).then((_) {
         setState(() {
           _isLoading = false;
         });
@@ -100,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(Icons.play_arrow),
               onPressed: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => OrderHistory()));
+                    MaterialPageRoute(builder: (context) => OrderHistory(id)));
               }),
         ],
       ),
@@ -110,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : ProductsGrid(),
+            : ProductsGrid(id),
       ),
     );
   }
@@ -120,7 +123,10 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     super.initState();
     id = FirebaseAuth.instance.currentUser.uid;
-    if (widget.number == "8866535452" || widget.number == "9106116309") {
+    if (widget.number == "8866535452" ||
+        widget.number == "9106116309" ||
+        widget.number == "8866599875" ||
+        widget.number == "7014799875") {
       id = "aWfOSS3W81eprgxms6QZT11vTZr1";
     }
 

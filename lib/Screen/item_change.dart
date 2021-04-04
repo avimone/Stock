@@ -16,7 +16,7 @@ class ItemChange extends StatefulWidget {
   double price;
   String id;
   String userId;
-  ItemChange(this.name, this.amount, this.price, this.id);
+  ItemChange(this.name, this.amount, this.price, this.id, this.userId);
   @override
   _ItemChangeState createState() => _ItemChangeState();
 }
@@ -57,8 +57,8 @@ class _ItemChangeState extends State<ItemChange> {
       print(item.id);
       item.amount = enteredAmount + item.amount;
       widget.amount = item.amount;
-      Provider.of<Logs>(context, listen: false).addLog(
-          item.name, "added", enteredAmount, DateTime.now(), item.price);
+      Provider.of<Logs>(context, listen: false).addLog(item.name, "added",
+          enteredAmount, DateTime.now(), item.price, widget.userId);
       Provider.of<Products>(context, listen: false)
           .updateProduct(item.id, item);
       _newAmountController.text = '';
@@ -77,8 +77,8 @@ class _ItemChangeState extends State<ItemChange> {
       //   item.amount = temp.toString();
       item.amount = item.amount - enteredAmount;
       widget.amount = item.amount;
-      Provider.of<Logs>(context, listen: false).addLog(
-          item.name, "minus", enteredAmount, DateTime.now(), item.price);
+      Provider.of<Logs>(context, listen: false).addLog(item.name, "minus",
+          enteredAmount, DateTime.now(), item.price, widget.userId);
       Provider.of<Products>(context, listen: false)
           .updateProduct(item.id, item);
       _newAmountController.text = '';
@@ -166,7 +166,6 @@ class _ItemChangeState extends State<ItemChange> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    widget.userId = FirebaseAuth.instance.currentUser.uid;
   }
 
   @override

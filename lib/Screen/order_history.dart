@@ -5,6 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:Stock/Widgets/summary.dart';
 
 class OrderHistory extends StatefulWidget {
+  String id;
+  OrderHistory(this.id);
   @override
   _OrderHistoryState createState() => _OrderHistoryState();
 }
@@ -12,13 +14,14 @@ class OrderHistory extends StatefulWidget {
 class _OrderHistoryState extends State<OrderHistory> {
   var _isInit = true;
   var _isLoading = false;
+
   @override
   void didChangeDependencies() {
     if (_isInit) {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<Logs>(context).fetchAndSetProducts().then((_) {
+      Provider.of<Logs>(context).fetchAndSetProducts(widget.id).then((_) {
         setState(() {
           _isLoading = false;
         });
